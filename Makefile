@@ -1,14 +1,23 @@
 CC=g++
-CPP_FLAGS=-g -Wall -lNTL
+CPP_FLAGS=-g -Wall
+LIBRARY_FLAGS=-lntl -lgmp
 
 TEST_SRCS=$(wildcard tests/*.cpp)
-TEST_EXES=$(TEST_SRCS:*.cpp=*.o)
+TEST_EXES=$(TEST_SRCS:%.cpp=%.out)
 
 CPP_SRCS=$(wildcard *.cpp)
-CPP_OBJS=$(CPP_SRCS:*.cpp=*.o)
+CPP_OBJS=$(CPP_SRCS:%.cpp=%.o)
 
-*.o: *.c
-	$(CC) $(CPP_FLAGS) $< -o $@
+%.o: %.cpp
+	$(CC) $(CPP_FLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
+
+%.out: %.cpp $(CPP_OBJS)
+	$(CC) $(CPP_FLAGS) $< $(CPP_OBJS) -o $@ $(LIBRARY_FLAGS)
 
 test: $(TEST_EXES)
-	echo "test"
+	for test_executable in $(TEST_EXES); do \
+		$$test_executable; \
+	done
+
+clean:
+	rm -rf $(TEST_EXES) $(CPP_OBJS)
