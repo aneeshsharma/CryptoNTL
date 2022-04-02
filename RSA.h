@@ -1,5 +1,7 @@
 #include <NTL/ZZ.h>
 #include <cstddef>
+#include <tuple>
+#include <vector>
 
 using namespace std;
 using namespace NTL;
@@ -9,15 +11,21 @@ using namespace NTL;
 
 class RSA {
     private:
-        int bit_length;
+        int bitLength;
         ZZ n, e, d;
     public:
-        RSA(int bit_length);
-        string encrypt(string message); 
-        string decrypt(string encrypted);
+        RSA(int bitLength);
+        ZZ encryptPublic(string message); 
+        string decryptPublic(ZZ encrypted);
+        ZZ encryptPrivate(string message); 
+        string decryptPrivate(ZZ encrypted);
+        tuple<ZZ, ZZ> getPublicKey();
+        tuple<ZZ, ZZ> getPrivateKey();
     private:
-        ZZ encrypt(ZZ message);
-        ZZ decrypt(ZZ encrypted);
+        ZZ encryptPublicZZ(ZZ message);
+        ZZ decryptPublicZZ(ZZ encrypted);
+        ZZ encryptPrivateZZ(ZZ message);
+        ZZ decryptPrivateZZ(ZZ encrypted);
 };
 
 #endif

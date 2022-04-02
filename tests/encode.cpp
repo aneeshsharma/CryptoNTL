@@ -11,7 +11,6 @@ int main() {
     ZZ result = encodeToZZ(s);
 
     string message = decodeFromZZ(result);
-    message += "f";
 
     if (s == message) {
         cout << "Passed" << endl;
