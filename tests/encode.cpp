@@ -7,18 +7,16 @@ using namespace NTL;
 
 int main() {
     string s = "hello this is a very long message";
-    cout << s << endl;
 
     ZZ result = encodeToZZ(s);
 
-    cout << result << endl;
-
     string message = decodeFromZZ(result);
-
-    cout << message << endl;
+    message += "f";
 
     if (s == message) {
         cout << "Passed" << endl;
+    } else {
+        cout << "Failed" << endl;
     }
 
     return 0;

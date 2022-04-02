@@ -15,7 +15,8 @@ CPP_OBJS=$(CPP_SRCS:%.cpp=%.o)
 	$(CC) $(CPP_FLAGS) $< $(CPP_OBJS) -o $@ $(LIBRARY_FLAGS)
 
 test: $(TEST_EXES)
-	for test_executable in $(TEST_EXES); do \
+	@for test_executable in $(TEST_EXES); do \
+		echo "Running $$test_executable"; \
 		$$test_executable; \
 	done
 
