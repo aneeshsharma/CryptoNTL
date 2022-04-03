@@ -1,4 +1,5 @@
 #include "util.h"
+#include "base64.h"
 #include <NTL/ZZ.h>
 #include <openssl/sha.h>
 
@@ -33,5 +34,5 @@ string hashString(string message) {
 
     SHA1((const unsigned char*) message.c_str(), (size_t) message.length(), hash);
 
-    return string(reinterpret_cast<char*>(hash));
+    return base64_encode(hash, SHA_DIGEST_LENGTH);
 }

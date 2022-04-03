@@ -19,7 +19,7 @@ RSA::RSA(int bit_length) {
 
     do {
         RandomBits(e, bit_length);
-    } while (GCD(e, tot_n) != 1);
+    } while (GCD(e, tot_n) != 1 || e > tot_n);
 
     InvMod(d, e, tot_n);
 
@@ -95,7 +95,7 @@ ZZ RSA::sign(string message) {
 bool RSA::verify(string message, ZZ signature) {
     string h = hashString(message);
     
-    string recved_h = decryptPublic(signature);
+    string recved_h = decryptPublic(signature);    
 
     return h == recved_h;
 }
