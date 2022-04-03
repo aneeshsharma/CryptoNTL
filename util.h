@@ -9,4 +9,6 @@ using namespace std;
 ZZ encodeToZZ(string message);
 string decodeFromZZ(ZZ encoded);
 
+string hashString(string message);
+
 #endif

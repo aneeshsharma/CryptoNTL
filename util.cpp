@@ -1,5 +1,6 @@
 #include "util.h"
 #include <NTL/ZZ.h>
+#include <openssl/sha.h>
 
 using namespace NTL;
 using namespace std;
@@ -25,4 +26,12 @@ string decodeFromZZ(ZZ encoded) {
     }
 
     return result;
+}
+
+string hashString(string message) {
+    unsigned char hash[SHA_DIGEST_LENGTH];
+
+    SHA1((const unsigned char*) message.c_str(), (size_t) message.length(), hash);
+
+    return string(reinterpret_cast<char*>(hash));
 }

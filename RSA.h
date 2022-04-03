@@ -21,6 +21,8 @@ class RSA {
         string decryptPrivate(ZZ encrypted);
         tuple<ZZ, ZZ> getPublicKey();
         tuple<ZZ, ZZ> getPrivateKey();
+        ZZ sign(string message);
+        bool verify(string message, ZZ signature);
     private:
         ZZ encryptPublicZZ(ZZ message);
         ZZ decryptPublicZZ(ZZ encrypted);

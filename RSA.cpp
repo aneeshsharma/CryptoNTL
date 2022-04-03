@@ -37,8 +37,7 @@ tuple<ZZ, ZZ> RSA::getPublicKey() {
 }
 
 ZZ RSA::encryptPublicZZ (ZZ message) {
-    ZZ result = PowerMod(message, e, n);
-    return result;
+    ZZ result = PowerMod(message, e, n); return result;
 }
 
 ZZ RSA::decryptPublicZZ (ZZ encrypted) {
@@ -86,4 +85,17 @@ string RSA::decryptPublic(ZZ encrypted) {
     string message = decodeFromZZ(messageAsZZ);
 
     return message;
+}
+
+ZZ RSA::sign(string message) {
+    string h = hashString(message);
+    return encryptPrivate(h);
+}
+
+bool RSA::verify(string message, ZZ signature) {
+    string h = hashString(message);
+    
+    string recved_h = decryptPublic(signature);
+
+    return h == recved_h;
 }

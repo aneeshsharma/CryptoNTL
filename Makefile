@@ -1,6 +1,6 @@
 CC=g++
 CPP_FLAGS=-g -Wall
-LIBRARY_FLAGS=-lntl -lgmp
+LIBRARY_FLAGS=-lntl -lgmp -lcrypto
 
 TEST_SRCS=$(wildcard tests/*.cpp)
 TEST_EXES=$(TEST_SRCS:%.cpp=%.out)
