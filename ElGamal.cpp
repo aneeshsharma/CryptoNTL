@@ -55,3 +55,11 @@ string ElGamal::decrypt(tuple<ZZ, ZZ> encrypted) {
 
     return decodeFromZZ(messageAsZZ);
 }
+
+tuple<ZZ, ZZ, ZZ, ZZ> ElGamal::getEncryptionKey() {
+    return {p, q, g, y};
+}
+
+tuple<ZZ, ZZ, ZZ, ZZ> ElGamal::getDecryptionKey() {
+    return {p, q, g, x};
+}

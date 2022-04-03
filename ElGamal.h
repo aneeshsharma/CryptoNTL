@@ -17,8 +17,8 @@ class ElGamal {
         ElGamal(int bitLength);
         tuple<ZZ, ZZ> encrypt(string message); 
         string decrypt(tuple<ZZ, ZZ> encrypted);
-        tuple<ZZ, ZZ> getPublicKey();
-        tuple<ZZ, ZZ> getPrivateKey();
+        tuple<ZZ, ZZ, ZZ, ZZ> getEncryptionKey();
+        tuple<ZZ, ZZ, ZZ, ZZ> getDecryptionKey();
     private:
         tuple<ZZ, ZZ> encryptZZ(ZZ message);
         ZZ decryptZZ(tuple<ZZ, ZZ> encrypted);
