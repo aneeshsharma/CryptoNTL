@@ -63,3 +63,16 @@ tuple<ZZ, ZZ, ZZ, ZZ> ElGamal::getEncryptionKey() {
 tuple<ZZ, ZZ, ZZ, ZZ> ElGamal::getDecryptionKey() {
     return {p, q, g, x};
 }
+
+tuple<ZZ, ZZ> ElGamal::sign(string message) {
+    string h = hashString(message);
+    return encrypt(h);
+}
+
+bool ElGamal::verify(string message, tuple<ZZ, ZZ> signature) {
+    string h = hashString(message);
+    
+    string recved_h = decrypt(signature);
+
+    return h == recved_h;
+}

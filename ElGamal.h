@@ -19,6 +19,8 @@ class ElGamal {
         string decrypt(tuple<ZZ, ZZ> encrypted);
         tuple<ZZ, ZZ, ZZ, ZZ> getEncryptionKey();
         tuple<ZZ, ZZ, ZZ, ZZ> getDecryptionKey();
+        tuple<ZZ, ZZ> sign(string message);
+        bool verify(string message, tuple<ZZ, ZZ> signature);
     private:
         tuple<ZZ, ZZ> encryptZZ(ZZ message);
         ZZ decryptZZ(tuple<ZZ, ZZ> encrypted);
