@@ -12,6 +12,9 @@ int main() {
 
     string message = decodeFromZZ(result);
 
+    cout << "Message: " << s << endl;
+    cout << "Encoded: " << result << endl;
+
     if (s == message) {
         cout << "Passed" << endl;
     } else {

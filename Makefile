@@ -8,6 +8,8 @@ TEST_EXES=$(TEST_SRCS:%.cpp=%.out)
 CPP_SRCS=$(wildcard *.cpp)
 CPP_OBJS=$(CPP_SRCS:%.cpp=%.o)
 
+.PRECIOUS: $(CPP_OBJS)
+
 %.o: %.cpp
 	$(CC) $(CPP_FLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
 
